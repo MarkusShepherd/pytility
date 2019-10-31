@@ -24,7 +24,7 @@ REQUIRES_PYTHON = ">=3.5.0"
 VERSION = None  # will be read from __version__.py
 
 # What packages are required for this module to be executed?
-REQUIRED = ()
+REQUIRED = ("python-dateutil",)
 
 # What packages are optional?
 EXTRAS = {
@@ -115,7 +115,7 @@ setup(
     extras_require=EXTRAS,
     include_package_data=True,
     license="MIT",
-    classifiers=(
+    classifiers=[
         # Trove classifiers
         # Full list: https://pypi.python.org/pypi?%3Aaction=list_classifiers
         "License :: OSI Approved :: MIT License",
@@ -124,7 +124,7 @@ setup(
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
-    ),
+    ],
     # $ setup.py publish support.
     cmdclass={"upload": UploadCommand},
 )
