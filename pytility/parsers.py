@@ -2,7 +2,7 @@
 
 """Parsers."""
 
-from datetime import datetime, timezone
+from datetime import date as date_cls, datetime, timezone
 from typing import Any, Optional
 
 import dateutil.parser
@@ -69,6 +69,10 @@ def parse_date(
     # already a datetime
     if isinstance(date, datetime):
         return _add_tz(date, tzinfo)
+
+    # date without time
+    if isinstance(date, date_cls):
+        return _add_tz(datetime(date.year, date.month, date.day), tzinfo=tzinfo)
 
     # parse as epoch time
     timestamp = parse_float(date)
