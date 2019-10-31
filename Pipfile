@@ -9,4 +9,7 @@ python_version = "3.7"
 [packages]
 
 [dev-packages]
+black = "==19.10b0"
+mypy = "*"
+pylint = "*"
 twine = "*"
