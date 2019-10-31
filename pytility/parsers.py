@@ -3,11 +3,12 @@
 """Parsers."""
 
 from datetime import datetime, timezone
+from typing import Any, Optional
 
-import dateutil
+import dateutil.parser
 
 
-def parse_int(string, base=10):
+def parse_int(string: Any, base: int = 10) -> Optional[int]:
     """Safely convert an object to int if possible, else return None."""
 
     if isinstance(string, int):
@@ -26,7 +27,7 @@ def parse_int(string, base=10):
     return None
 
 
-def parse_float(number):
+def parse_float(number: Any) -> Optional[float]:
     """Safely convert an object to float if possible, else return None."""
 
     try:
@@ -36,7 +37,7 @@ def parse_float(number):
     return None
 
 
-def parse_bool(item):
+def parse_bool(item: Any) -> bool:
     """Parses an item and converts it to a boolean."""
 
     if isinstance(item, int):
@@ -49,13 +50,17 @@ def parse_bool(item):
     return False
 
 
-def _add_tz(date, tzinfo=None):
+def _add_tz(
+    date: Optional[datetime], tzinfo: Optional[timezone] = None
+) -> Optional[datetime]:
     return (
         date if not tzinfo or not date or date.tzinfo else date.replace(tzinfo=tzinfo)
     )
 
 
-def parse_date(date, tzinfo=None, format_str=None):
+def parse_date(
+    date: Any, tzinfo: Optional[timezone] = None, format_str: Optional[str] = None
+) -> Optional[datetime]:
     """Try to turn input into a datetime object."""
 
     if not date:

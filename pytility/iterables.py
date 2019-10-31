@@ -2,12 +2,20 @@
 
 """Iterable utilities."""
 
+from collections import OrderedDict
 from itertools import groupby
+from typing import Any, Iterable, List, Optional, TypeVar
 
 ITERABLE_SINGLE_VALUES = (dict, str, bytes)
+TYPE = TypeVar("TYPE")
 
 
-def arg_to_iter(arg):
+def clear_list(items: Iterable[Optional[TYPE]]) -> List[TYPE]:
+    """Return unique items in order of first ocurrence."""
+    return list(OrderedDict.fromkeys(filter(None, items)))
+
+
+def arg_to_iter(arg: Any) -> Iterable:
     """Wraps arg into tuple if not an iterable."""
 
     if arg is None:
