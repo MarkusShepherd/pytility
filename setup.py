@@ -4,8 +4,6 @@
 """Setup."""
 
 # Template from https://github.com/navdeep-G/setup.py
-# Note: To use the 'upload' functionality of this file, you must:
-#   $ pipenv install twine --dev
 
 import io
 import os
@@ -17,18 +15,24 @@ from setuptools import find_packages, setup, Command
 # Package meta-data.
 NAME = "pytility"
 DESCRIPTION = "A lean collection of Python utilities"
-URL = "https://gitlab.com/mshepherd/pytility"
+KEYWORDS = ("utility", "utilities", "pytility")
+URL_HOMEPAGE = "https://gitlab.com/mshepherd/pytility"
+URL_DOCUMENTATION = "https://gitlab.com/mshepherd/pytility/blob/master/README.md"
+URL_FUNDING = None
+URL_THANKS = None
+URL_SOURCE = "https://gitlab.com/mshepherd/pytility"
+URL_TRACKER = "https://gitlab.com/mshepherd/pytility/issues"
 EMAIL = "markus.r.shepherd@gmail.com"
 AUTHOR = "Markus Shepherd"
 REQUIRES_PYTHON = ">=3.5.0"
 VERSION = None  # will be read from __version__.py
 
 # What packages are required for this module to be executed?
-REQUIRED = ("python-dateutil",)
+REQUIRED = ()
 
 # What packages are optional?
 EXTRAS = {
-    # 'fancy feature': ['django'],
+    "dates": ("python-dateutil",),
 }
 
 # The rest you shouldn't have to touch too much :)
@@ -101,13 +105,21 @@ setup(
     description=DESCRIPTION,
     long_description=LONG_DESCRIPTION,
     long_description_content_type="text/markdown",
+    keywords=KEYWORDS,
     author=AUTHOR,
     author_email=EMAIL,
+    url=URL_HOMEPAGE,
+    project_urls={
+        "Documentation": URL_DOCUMENTATION,
+        # "Funding": URL_FUNDING,
+        # "Say Thanks!": URL_THANKS,
+        "Source": URL_SOURCE,
+        "Tracker": URL_TRACKER,
+    },
     python_requires=REQUIRES_PYTHON,
-    url=URL,
     packages=find_packages(exclude=("tests", "*.tests", "*.tests.*", "tests.*")),
     # If your package is a single module, use this instead of 'packages':
-    # py_modules=("ludoj_scraper",),
+    # py_modules=(),
     # entry_points={
     #     'console_scripts': ['mycli=mymodule:cli'],
     # },
