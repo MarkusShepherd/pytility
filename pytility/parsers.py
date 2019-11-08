@@ -5,8 +5,6 @@
 from datetime import date as date_cls, datetime, timezone
 from typing import Any, Optional
 
-import dateutil.parser
-
 
 def parse_int(string: Any, base: int = 10) -> Optional[int]:
     """Safely convert an object to int if possible, else return None."""
@@ -87,6 +85,8 @@ def parse_date(
             pass
 
     try:
+        import dateutil.parser
+
         # parse as string
         return _add_tz(dateutil.parser.parse(date), tzinfo)
     except Exception:
