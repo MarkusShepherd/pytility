@@ -11,6 +11,7 @@ python-dateutil = "*"
 
 [dev-packages]
 black = "==19.10b0"
+flake8 = "*"
 mypy = "*"
 pylint = "*"
 twine = "*"
